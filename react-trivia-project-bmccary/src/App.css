@@ -76,6 +76,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-self: center;
+  row-gap: 40px;
   height: 300px;
   width: 800px;
 }

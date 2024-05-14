@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import Question from "./Question_card";
 
 function App() {
   return (
@@ -16,8 +17,7 @@ function App() {
               <img src={reactLogo} className="logo react" alt="React logo" />
             </div>
             <div className="contentBox">
-              <h3 className="questionBox">Question</h3>
-
+              <Question />
               <div className="buttonContainer">
                 <button className="btn">A</button>
                 <button className="btn">B</button>
