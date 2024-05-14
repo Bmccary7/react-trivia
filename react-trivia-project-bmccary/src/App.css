@@ -53,9 +53,9 @@
   border-radius: 5px;
 }
 
-.contextBox{
+.contentBox{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   color: black;
   background-color: #FFFDD0;
   border-radius: 20px;
@@ -63,6 +63,28 @@
   height: 75%;
   margin-top: 40px;
   margin-left: 5%;
+}
+.question{
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  height: 60px;
+
+}
+.buttonContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-self: center;
+  height: 300px;
+  width: 800px;
+}
+.btn{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 300px;
+  height: 100px;
 }
 
 .read-the-docs {

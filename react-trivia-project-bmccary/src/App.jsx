@@ -15,7 +15,16 @@ function App() {
               <h2 className="title">Silly trivia with qwazy questions!</h2>
               <img src={reactLogo} className="logo react" alt="React logo" />
             </div>
-            <div className="contextBox">context for me</div>
+            <div className="contentBox">
+              <h3 className="question">Question</h3>
+
+              <div className="buttonContainer">
+                <button className="btn">A</button>
+                <button className="btn">B</button>
+                <button className="btn">C</button>
+                <button className="btn">D</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
