@@ -18,12 +18,6 @@ function App() {
             </div>
             <div className="contentBox">
               <Question />
-              <div className="buttonContainer">
-                <button className="btn">A</button>
-                <button className="btn">B</button>
-                <button className="btn">C</button>
-                <button className="btn">D</button>
-              </div>
             </div>
           </div>
         </div>
