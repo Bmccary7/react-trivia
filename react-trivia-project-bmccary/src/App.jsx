@@ -7,6 +7,16 @@ import triviaQuestions from "./Question_list";
 
 function App() {
   const [currentQ, setQ] = useState(0);
+  const nextQ = () => {
+    if (currentQ < triviaQuestions.length - 1) {
+      setQ(currentQ + 1);
+    }
+  };
+  const prevQ = () => {
+    if (currentQ > 0) {
+      setQ(currentQ - 1);
+    }
+  };
   return (
     <>
       <div className="titleBox">
@@ -28,6 +38,14 @@ function App() {
                 D={triviaQuestions[currentQ].choiceD}
                 answer={triviaQuestions[currentQ].answer}
               />
+              <div className="navBtns">
+                <button className="prevBtn" onClick={prevQ}>
+                  Prev
+                </button>
+                <button className="nextBtn" onClick={nextQ}>
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>
