@@ -3,8 +3,10 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Question from "./Question_card";
+import triviaQuestions from "./Question_list";
 
 function App() {
+  const [currentQ, setQ] = useState(0);
   return (
     <>
       <div className="titleBox">
@@ -17,7 +19,15 @@ function App() {
               <img src={reactLogo} className="logo react" alt="React logo" />
             </div>
             <div className="contentBox">
-              <Question />
+              <Question
+                key={triviaQuestions[currentQ].question}
+                question={triviaQuestions[currentQ].question}
+                A={triviaQuestions[currentQ].choiceA}
+                B={triviaQuestions[currentQ].choiceB}
+                C={triviaQuestions[currentQ].choiceC}
+                D={triviaQuestions[currentQ].choiceD}
+                answer={triviaQuestions[currentQ].answer}
+              />
             </div>
           </div>
         </div>
