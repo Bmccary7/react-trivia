@@ -97,7 +97,7 @@ const triviaQuestions = [
     choiceB: "What's taters precious?",
     choiceC: "Po-tay-toes",
     choiceD: "Boil em, mash em, stick em in a stew",
-    answer: "",
+    answer: "Taters",
   },
 
   {
@@ -163,10 +163,10 @@ const triviaQuestions = [
   {
     question: "20. Fill in the blank. 'It's not just a boulder! ______'",
     choiceA: "THIS IS SPARTA!",
-    choiceB: "*Through happy tears* It's a rock",
+    choiceB: "*Through happy tears* It's a rock!",
     choiceC: "You're killing me, Smalls.",
     choiceD: "So you're telling me there's a chance?",
-    answer: "*Through happy tears* It's a rock",
+    answer: "*Through happy tears* It's a rock!",
   },
 ];
 
