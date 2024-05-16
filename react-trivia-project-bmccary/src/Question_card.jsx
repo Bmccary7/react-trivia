@@ -1,58 +1,68 @@
+import { useEffect, useState } from "react";
 import triviaQuestions from "./Question_list";
 
-function Question({ question, A, B, C, D, answer }) {
-  const Acorrect = () => {
-    if (A === answer) {
-      document.getElementById("Abtn").style.backgroundColor = "green";
-      console.log("Right answer");
-    } else {
-      document.getElementById("Abtn").style.backgroundColor = "red";
-      console.log("Wrong Answer");
+function Question({ question, choices, answer }) {
+  const [score, setScore] = useState(0);
+  const [currentQ, setQ] = useState(0);
+  const nextQ = () => {
+    if (currentQ < triviaQuestions.length - 1) {
+      setQ(currentQ + 1);
     }
   };
-  const Bcorrect = () => {
-    if (B === answer) {
-      document.getElementById("Bbtn").style.backgroundColor = "green";
-      console.log("Right answer");
-    } else {
-      document.getElementById("Bbtn").style.backgroundColor = "red";
-      console.log("Wrong Answer");
+  const prevQ = () => {
+    if (currentQ > 0) {
+      setQ(currentQ - 1);
     }
   };
-  const Ccorrect = () => {
-    if (C === answer) {
-      document.getElementById("Cbtn").style.backgroundColor = "green";
+  const [qAnswered, setqAnswered] = useState(new Set());
+  const [selectedChoice, setSelectedChoice] = useState(new Set());
+  const select = (choice) => {
+    setSelectedChoice((set) => new Set([...Array.from(set), choice]));
+    console.log(selectedChoice);
+    if (() => !qAnswered.includes(question)) {
+      setqAnswered(() => new Set([...Array.from(qAnswered), question]));
+    }
+    console.log(qAnswered);
+    if (choice === answer) {
       console.log("Right answer");
     } else {
-      document.getElementById("Cbtn").style.backgroundColor = "red";
       console.log("Wrong answer");
     }
   };
-  const Dcorrect = () => {
-    if (D === answer) {
-      document.getElementById("Dbtn").style.backgroundColor = "green";
-      console.log("Right answer");
-    } else {
-      document.getElementById("Dbtn").style.backgroundColor = "red";
-      console.log("Wrong Answer");
-    }
-  };
-
+  useEffect(() => {
+    setSelectedChoice(new Set());
+  }, [currentQ]);
+  question = triviaQuestions[currentQ].question;
+  choices = triviaQuestions[currentQ].choices;
+  answer = triviaQuestions[currentQ].answer;
   return (
     <>
       <h3 className="questionBox">{question}</h3>
       <div className="buttonContainer">
-        <button className="btn" id="Abtn" onClick={Acorrect}>
-          {A}
+        {choices.map((choice) => (
+          <button
+            className="btn"
+            key={choice}
+            onClick={() => select(choice)}
+            style={{
+              backgroundColor: selectedChoice.has(choice)
+                ? choice === answer
+                  ? "green"
+                  : "red"
+                : "black",
+            }}
+          >
+            {choice}
+          </button>
+        ))}
+      </div>
+      <div className="nav_scoreContainer">
+        <button className="navBtn" onClick={prevQ}>
+          Prev
         </button>
-        <button className="btn" id="Bbtn" onClick={Bcorrect}>
-          {B}
-        </button>
-        <button className="btn" id="Cbtn" onClick={Ccorrect}>
-          {C}
-        </button>
-        <button className="btn" id="Dbtn" onClick={Dcorrect}>
-          {D}
+        <p className="scoreContainer">Score: </p>
+        <button className="navBtn" onClick={nextQ}>
+          Next
         </button>
       </div>
     </>

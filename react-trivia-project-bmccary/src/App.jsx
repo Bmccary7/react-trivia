@@ -6,17 +6,6 @@ import Question from "./Question_card";
 import triviaQuestions from "./Question_list";
 
 function App() {
-  const [currentQ, setQ] = useState(0);
-  const nextQ = () => {
-    if (currentQ < triviaQuestions.length - 1) {
-      setQ(currentQ + 1);
-    }
-  };
-  const prevQ = () => {
-    if (currentQ > 0) {
-      setQ(currentQ - 1);
-    }
-  };
   return (
     <>
       <div className="titleBox">
@@ -29,23 +18,7 @@ function App() {
               <img src={reactLogo} className="logo react" alt="React logo" />
             </div>
             <div className="contentBox">
-              <Question
-                key={triviaQuestions[currentQ].question}
-                question={triviaQuestions[currentQ].question}
-                A={triviaQuestions[currentQ].choiceA}
-                B={triviaQuestions[currentQ].choiceB}
-                C={triviaQuestions[currentQ].choiceC}
-                D={triviaQuestions[currentQ].choiceD}
-                answer={triviaQuestions[currentQ].answer}
-              />
-              <div className="navBtns">
-                <button className="prevBtn" onClick={prevQ}>
-                  Prev
-                </button>
-                <button className="nextBtn" onClick={nextQ}>
-                  Next
-                </button>
-              </div>
+              <Question />
             </div>
           </div>
         </div>
