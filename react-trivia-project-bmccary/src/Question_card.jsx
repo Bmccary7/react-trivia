@@ -19,15 +19,15 @@ function Question({ question, choices, answer }) {
   const select = (choice) => {
     setSelectedChoice((set) => new Set([...Array.from(set), choice]));
     console.log(selectedChoice);
-    if (() => !qAnswered.includes(question)) {
-      setqAnswered(() => new Set([...Array.from(qAnswered), question]));
+    if (!qAnswered.has(question)) {
+      if (choice === answer) {
+        setScore(score + 1);
+        setqAnswered(() => new Set([...Array.from(qAnswered), question]));
+      } else {
+        setqAnswered(() => new Set([...Array.from(qAnswered), question]));
+      }
     }
     console.log(qAnswered);
-    if (choice === answer) {
-      console.log("Right answer");
-    } else {
-      console.log("Wrong answer");
-    }
   };
   useEffect(() => {
     setSelectedChoice(new Set());
@@ -37,7 +37,9 @@ function Question({ question, choices, answer }) {
   answer = triviaQuestions[currentQ].answer;
   return (
     <>
-      <h3 className="questionBox">{question}</h3>
+      <h3 className="questionBox">
+        {question} Answered: {qAnswered.has(question) ? "✔️" : "❌"}
+      </h3>
       <div className="buttonContainer">
         {choices.map((choice) => (
           <button
@@ -60,7 +62,7 @@ function Question({ question, choices, answer }) {
         <button className="navBtn" onClick={prevQ}>
           Prev
         </button>
-        <p className="scoreContainer">Score: </p>
+        <p className="scoreContainer">Score: {score}</p>
         <button className="navBtn" onClick={nextQ}>
           Next
         </button>
