@@ -4,6 +4,8 @@ import triviaQuestions from "./Question_list";
 function Question({ question, choices, answer }) {
   const [score, setScore] = useState(0);
   const [currentQ, setQ] = useState(0);
+  const [qAnswered, setqAnswered] = useState(new Set());
+  const [selectedChoice, setSelectedChoice] = useState(new Set());
   const nextQ = () => {
     if (currentQ < triviaQuestions.length - 1) {
       setQ(currentQ + 1);
@@ -14,11 +16,8 @@ function Question({ question, choices, answer }) {
       setQ(currentQ - 1);
     }
   };
-  const [qAnswered, setqAnswered] = useState(new Set());
-  const [selectedChoice, setSelectedChoice] = useState(new Set());
   const select = (choice) => {
     setSelectedChoice((set) => new Set([...Array.from(set), choice]));
-    console.log(selectedChoice);
     if (!qAnswered.has(question)) {
       if (choice === answer) {
         setScore(score + 1);
@@ -27,7 +26,6 @@ function Question({ question, choices, answer }) {
         setqAnswered(() => new Set([...Array.from(qAnswered), question]));
       }
     }
-    console.log(qAnswered);
   };
   useEffect(() => {
     setSelectedChoice(new Set());
